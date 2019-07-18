@@ -194,7 +194,7 @@ objects:
                   memory: "${MEMORY_LIMIT}"
 
   - kind: "HorizontalPodAutoscaler"
-    apiVersion: "extensions/v1beta1"
+    apiVersion: "autoscaling/v2beta1"
     metadata:
       name: "${NAME}"
       labels:
@@ -204,11 +204,13 @@ objects:
         kind: DeploymentConfig
         name: "${NAME}"
         apiVersion: "v1"
-        subresource: "scale"
       minReplicas: ${MIN_REPLICAS}
       maxReplicas: ${MAX_REPLICAS}
-      cpuUtilization:
-        targetPercentage: ${TARGET_PERCENTAGE}
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            targetAverageUtilization: ${TARGET_PERCENTAGE}
 
 parameters:
   - name: "NAME"
