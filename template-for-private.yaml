@@ -196,23 +196,19 @@ objects:
                   memory: "${MEMORY_LIMIT}"
 
   - kind: "HorizontalPodAutoscaler"
-    apiVersion: "autoscaling/v2beta1"
+    apiVersion: "autoscaling/v1"
     metadata:
       name: "${NAME}"
       labels:
         app: "${NAME}"
     spec:
-      scaleRef:
+      scaleTargetRef:
         kind: DeploymentConfig
         name: "${NAME}"
         apiVersion: "v1"
       minReplicas: "${MIN_REPLICAS}"
       maxReplicas: "${MAX_REPLICAS}"
-      metrics:
-        - type: Resource
-          resource:
-            name: cpu
-            targetAverageUtilization: ${TARGET_PERCENTAGE}
+      targetCPUUtilizationPercentage: ${TARGET_PERCENTAGE}
 
 parameters:
   - name: "NAME"
