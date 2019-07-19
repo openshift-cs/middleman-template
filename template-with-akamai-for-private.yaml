@@ -43,6 +43,8 @@ objects:
   - kind: "Route"
     apiVersion: "v1"
     metadata:
+      annotations:
+        kubernetes.io/tls-acme: "true"
       name: "${NAME}"
       labels:
         app: "${NAME}"
