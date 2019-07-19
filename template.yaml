@@ -204,8 +204,8 @@ objects:
         kind: DeploymentConfig
         name: "${NAME}"
         apiVersion: "v1"
-      minReplicas: "${MIN_REPLICAS}"
-      maxReplicas: "${MAX_REPLICAS}"
+      minReplicas: ${MIN_REPLICAS}
+      maxReplicas: ${MAX_REPLICAS}
       targetCPUUtilizationPercentage: ${TARGET_PERCENTAGE}
 
 parameters:
@@ -242,43 +242,43 @@ parameters:
     displayName: "CPU Request"
     description: "Requested amount of cpu the PHP container will use."
     required: true
-    value: "200m"
+    value: "50m"
 
   - name: "CPU_LIMIT"
     displayName: "CPU Limit"
     description: "Maximum amount of cpu the PHP container can use."
     required: true
-    value: "2"
+    value: "500m"
 
   - name: "MEMORY_REQUEST"
     displayName: "Memory Request"
     description: "Requested amount of memory the PHP container will use."
     required: true
-    value: "1Gi"
+    value: "100Mi"
 
   - name: "MEMORY_LIMIT"
     displayName: "Memory Limit"
     description: "Maximum amount of memory the PHP container can use."
     required: true
-    value: "2Gi"
+    value: "512Mi"
 
   - name: "MIN_REPLICAS"
     displayName: "Minimum pod replicas"
     description: "The minimum number of replicas to run in autoscaling."
     required: true
-    value: "1"
+    value: 1
 
   - name: "MAX_REPLICAS"
     displayName: "Maximum pod replicas"
     description: "The maximum number of replicas to run in autoscaling."
     required: true
-    value: "10"
+    value: 10
 
   - name: "TARGET_PERCENTAGE"
     displayName: "Autoscaling target CPU percentage (as an integer)."
     description: "The percentage of the requested CPU that each pod should ideally be using."
     required: true
-    value: "80"
+    value: 80
 
   - name: "NAMESPACE"
     displayName: "Namespace"
