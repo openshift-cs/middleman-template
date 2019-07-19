@@ -206,8 +206,8 @@ objects:
         kind: DeploymentConfig
         name: "${NAME}"
         apiVersion: "v1"
-      minReplicas: ${MIN_REPLICAS}
-      maxReplicas: ${MAX_REPLICAS}
+      minReplicas: "${MIN_REPLICAS}"
+      maxReplicas: "${MAX_REPLICAS}"
       metrics:
         - type: Resource
           resource:
