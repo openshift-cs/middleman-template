@@ -52,9 +52,6 @@ objects:
         kind: "Service"
         name: "${NAME}"
         weight: 1
-      tls:
-        termination: "edge"
-        insecureEdgeTerminationPolicy: "Redirect"
 
   - kind: "ImageStream"
     apiVersion: "v1"
